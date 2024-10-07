@@ -58,10 +58,14 @@ const App = () => {
         })
         .then(() => {
           setAddMessage(`Added ${newObject.name}`);
+        })
+        .catch((error) => {
+          setErrorMessage(error.response.data.error);
         });
 
       setTimeout(() => {
         setAddMessage(null);
+        setErrorMessage(null);
       }, 5000);
     } else {
       const person = persons.find((person) => person.name === newName);
